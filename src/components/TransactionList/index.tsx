@@ -1,8 +1,8 @@
 import { FunctionComponent, useMemo } from "react";
 import "./styles.css";
 import { useGetAllTransactionsQuery } from "../../services/transactions";
-import { TransactionType } from "../../services/TransactionType";
-import _ from "lodash";
+import { priceFormatter } from "../../utils/priceFormatter";
+import { groupTransactionsByDate } from "../../utils/groupTransactionsByDate";
 
 /**
  * Transaction List UI.
@@ -10,11 +10,10 @@ import _ from "lodash";
 const TransactionList: FunctionComponent = () => {
   const { data, error, isLoading } = useGetAllTransactionsQuery("");
 
-  const groupByDate = (data: TransactionType[] | undefined) => {
-    if (!data) return null;
-    return _.groupBy(data, (item: TransactionType) => item.date);
-  };
-  const groupedTransactions = useMemo(() => groupByDate(data) ?? {}, [data]);
+  const groupedTransactions = useMemo(
+    () => groupTransactionsByDate(data) ?? {},
+    [data]
+  );
 
   const getCashflow = (cashflow: string) => {
     switch (cashflow) {
@@ -62,7 +61,7 @@ const TransactionList: FunctionComponent = () => {
                   </div>
                   <div className="amount">
                     <h3>
-                      {getCashflow(cashflow)}&nbsp;${amount}
+                      {getCashflow(cashflow)}&nbsp;{priceFormatter(amount)}
                     </h3>
                   </div>
                 </div>

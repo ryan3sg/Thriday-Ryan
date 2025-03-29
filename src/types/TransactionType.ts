@@ -21,7 +21,7 @@ export type TransactionType = {
   logoUrl: string;
   receiptName: string;
   receiptUrl: string;
-  receiptID: 5831;
+  receiptID: number;
   attachedFileName: null;
   attachmentId: null;
   gst: string;
@@ -49,7 +49,7 @@ export type TransactionType = {
   invoiceTotalAmount: null;
   coaName: string;
   businessUsePercentage: number;
-  tags: [];
+  tags: string[];
   attachment: [];
   orderPriority: number;
   id: string;
