@@ -1,0 +1,50 @@
+.component-transaction .rounded-box {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.component-transaction .items {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 10px 0;
+}
+
+.component-transaction .items .logo {
+  flex-grow: 0;
+  width: 10%;
+  min-width: 50px;
+  max-width: 80px;
+  height: auto;
+  margin: 0;
+}
+.component-transaction .items .logo img {
+  display: block;
+  width: 100%;
+}
+
+.component-transaction .items .details {
+  flex-grow: 1;
+  width: 100%;
+}
+
+.component-transaction .items .details .title {
+  font-size: 1.6rem;
+  line-height: 110%;
+  margin: 0.5em 0;
+}
+.component-transaction .items .details .location {
+  font-size: 1.6rem;
+  line-height: 110%;
+  margin: 0.5em 0;
+}
+
+.component-transaction .items .amount {
+  font-size: 1.6rem;
+  flex-grow: 0;
+  max-width: 200px;
+  text-align: right;
+  white-space: pre;
+}

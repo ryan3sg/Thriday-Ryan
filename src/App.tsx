@@ -6,6 +6,7 @@ import '@fontsource/source-sans-pro/700.css';
 
 import ContentWidthContainer from './components/layout/ContentWidthContainer';
 import SectionContainer from './components/layout/SectionContainer';
+import TransactionList from './components/TransactionList';
 
 import './App.css';
 
@@ -31,7 +32,7 @@ const App: FunctionComponent = () => {
           <p>Toolbar</p>
         </SectionContainer>
         <SectionContainer>
-          <p>Transaction List</p>
+          <TransactionList />
         </SectionContainer>
       </main>
     </ContentWidthContainer>
