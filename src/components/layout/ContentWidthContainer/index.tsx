@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { FunctionComponent, ReactNode } from 'react';
 
 import './styles.css';
 
@@ -8,15 +8,14 @@ type ContentWidthContainerProps = {
   size?: 'normal' | 'small' | 'slim' | 'wide';
 };
 
-/*
-    Use this to wrap any components that should be centre-aligned on the page.
-    Adds bottom-padding to ensure consistent spacing between components.
+/**
+* Use this to wrap any components that should be centre-aligned on the page.
+* Adds bottom-padding to ensure consistent spacing between components.
 */
-
-const ContentWidthContainer = ({
+const ContentWidthContainer: FunctionComponent<ContentWidthContainerProps> = ({
   children,
   className = '',
-}: ContentWidthContainerProps) => (
+}) => (
   <section
     className={`c-container-content-width ${className}`}
   >
