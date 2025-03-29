@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@fontsource/source-sans-pro": "^5.2.5",
+    "@reduxjs/toolkit": "^2.6.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0"
   },
   "devDependencies": {
     "@rsbuild/core": "^1.2.14",
