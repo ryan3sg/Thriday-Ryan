@@ -1,7 +1,5 @@
 import { FunctionComponent, ReactNode } from 'react';
 
-import './styles.css';
-
 type SectionContainerProps = {
   children: ReactNode;
   className?: string;

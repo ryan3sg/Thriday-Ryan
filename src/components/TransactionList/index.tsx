@@ -3,12 +3,17 @@ import "./styles.css";
 import { useGetAllTransactionsQuery } from "../../services/transactions";
 import { priceFormatter } from "../../utils/priceFormatter";
 import { groupTransactionsByDate } from "../../utils/groupTransactionsByDate";
+import { useAppSelector } from "../../store/hooks";
 
 /**
  * Transaction List UI.
  */
 const TransactionList: FunctionComponent = () => {
-  const { data, error, isLoading } = useGetAllTransactionsQuery("");
+  const transactionFilter = useAppSelector(
+    (state) => state.transactionFilter.value
+  );
+  const { data, error, isLoading } =
+    useGetAllTransactionsQuery(transactionFilter);
 
   const groupedTransactions = useMemo(
     () => groupTransactionsByDate(data) ?? {},

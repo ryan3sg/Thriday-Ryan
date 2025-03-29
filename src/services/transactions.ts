@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { TransactionType } from "../types/TransactionType";
+import { CashflowEnums } from "../types/CashflowEnums";
 
 export const transactionsApi = createApi({
   reducerPath: "transactionsApi",
@@ -7,8 +8,8 @@ export const transactionsApi = createApi({
     baseUrl: import.meta.env.REACT_APP_API_BASE_URL,
   }),
   endpoints: (builder) => ({
-    getAllTransactions: builder.query<TransactionType[], string>({
-      query: (params: string) => `/transactions?${params}`,
+    getAllTransactions: builder.query<TransactionType[], CashflowEnums>({
+      query: (params: CashflowEnums) => `/transactions?${params}`,
     }),
     createTransaction: builder.mutation<TransactionType, Partial<TransactionType>>({
       query: (newItem: Partial<TransactionType>) => ({

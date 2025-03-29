@@ -9,6 +9,7 @@ import SectionContainer from './components/layout/SectionContainer';
 import TransactionList from './components/TransactionList';
 
 import './App.css';
+import Toolbar from './components/Toolbar';
 
 /*
   To reference icons:
@@ -29,7 +30,7 @@ const App: FunctionComponent = () => {
           <h1>Thriday Code Challenge</h1>
         </SectionContainer>
         <SectionContainer>
-          <p>Toolbar</p>
+          <Toolbar />
         </SectionContainer>
         <SectionContainer>
           <TransactionList />

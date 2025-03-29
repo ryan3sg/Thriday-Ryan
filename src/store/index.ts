@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { transactionsApi } from "../services/transactions";
+import transactionFilterReducer from "./transactionFilterSlice";
 
 export const store = configureStore({
   reducer: {
+    transactionFilter: transactionFilterReducer,
     [transactionsApi.reducerPath]: transactionsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
