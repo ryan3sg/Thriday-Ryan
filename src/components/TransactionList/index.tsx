@@ -6,6 +6,7 @@ import { groupTransactionsByDate } from "../../utils/groupTransactionsByDate";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import clsx from "clsx";
 import { setPage } from "../../store/transactionFilterSlice";
+import { GenericButton } from "../Button/GenericButton";
 
 /**
  * Transaction Lists UI.
@@ -92,21 +93,19 @@ const TransactionList: FunctionComponent = () => {
         ))
       )}
       <div className={styles.pagination}>
-        <button
-          className="button"
-          onClick={() => dispatch(setPage(page - 1))}
-          disabled={totalPages ? page === 1 : true}
-        >
-          Previous
-        </button>
-        <h4>Page {page} of {totalPages}</h4>
-        <button
-          className="button"
-          onClick={() => dispatch(setPage(page + 1))}
-          disabled={totalPages ? !next : true}
-        >
-          Next
-        </button>
+        <GenericButton
+          onClickHandLer={() => dispatch(setPage(page - 1))}
+          isDisabled={totalPages ? page === 1 : true}
+          text="Previous"
+        />
+        <h4>
+          Page {page} of {totalPages}
+        </h4>
+        <GenericButton
+          onClickHandLer={() => dispatch(setPage(page + 1))}
+          isDisabled={totalPages ? !next : true}
+          text="Next"
+        />
       </div>
     </div>
   );

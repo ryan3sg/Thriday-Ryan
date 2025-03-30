@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { CashflowEnums } from "../../types/CashflowEnums";
 import { buttonItems } from "./buttonItems";
 import { filterByCashflow, setPage } from "../../store/transactionFilterSlice";
-import clsx from "clsx";
+import { GenericButton } from "../Button/GenericButton";
 
 /**
  * Toolbar UI component for filtering transactions.
@@ -26,14 +26,13 @@ const Toolbar: FunctionComponent = () => {
   return (
     <div className={styles.toolbar}>
       {buttonItems.map(({ id, filter, icon, content }) => (
-        <button
+        <GenericButton
           key={id}
-          className={clsx("button", "rounded-box", isActive(filter) && "active")}
-          onClick={() => handleFilter(filter, isActive(filter))}
-        >
-          <img src={icon} />
-          {content && <span>{content}</span>}
-        </button>
+          isActive={isActive(filter)}
+          onClickHandLer={() => handleFilter(filter, isActive(filter))}
+          icon={icon}
+          text={content && <span className={styles.span}>{content}</span>}
+        />
       ))}
     </div>
   );

@@ -5,3 +5,14 @@
   align-items: baseline;
   justify-content: end;
 }
+
+.span {
+  font-size: 1em;
+  color: #111111;
+  font-weight: 700;
+}
+.active {
+  span {
+    color: #ffffff;
+  }
+}

@@ -1,0 +1,33 @@
+/* button - default state */
+.button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 1em;
+  cursor: pointer;
+  font-size: 1.6rem;
+  line-height: 100%;
+  border: 1px solid #c5d0db;
+  background-color: #ffffff;
+  img {
+    width: 1.3em;
+    height: 1.3em;
+  }
+  span {
+    font-size: 1em;
+    color: #111111;
+    font-weight: 700;
+  }
+}
+
+/* button - active state */
+.active {
+  border: 1px solid #00d373;
+  background-color: #00d373;
+  img {
+    filter: invert(100%);
+  }
+  span {
+    color: #ffffff;
+  }
+}
