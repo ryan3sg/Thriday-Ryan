@@ -1,5 +1,5 @@
 import { FunctionComponent, useMemo } from "react";
-import "./styles.css";
+import "./styles.scss";
 import { useGetAllTransactionsQuery } from "../../services/transactions";
 import { priceFormatter } from "../../utils/priceFormatter";
 import { groupTransactionsByDate } from "../../utils/groupTransactionsByDate";

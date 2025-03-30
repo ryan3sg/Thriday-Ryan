@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import "./styles.css";
+import "./styles.scss";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { CashflowEnums } from "../../types/CashflowEnums";
 import { buttonItems } from "./buttonItems";

@@ -49,26 +49,23 @@ body {
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
-}
-
-.content h1 {
-  font-size: 3.6rem;
-  font-weight: 700;
-}
-
-.content p {
-  margin: 0;
-  font-size: 1.6rem;
+  h1 {
+    font-size: 3.6rem;
+    font-weight: 700;
+  }
+  p {
+    margin: 0;
+    font-size: 1.6rem;
+  }
 }
 
 .rounded-box {
   border-radius: 8px;
   overflow: hidden;
 }
-
 .color-success {
-  color: #00CC00;
+  color: #00cc00;
 }
 .color-error {
-  color: #CC0000;
+  color: #cc0000;
 }

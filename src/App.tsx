@@ -8,7 +8,7 @@ import ContentWidthContainer from './components/layout/ContentWidthContainer';
 import SectionContainer from './components/layout/SectionContainer';
 import TransactionList from './components/TransactionList';
 
-import './App.css';
+import './App.scss';
 import Toolbar from './components/Toolbar';
 
 /*

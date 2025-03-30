@@ -1,6 +1,6 @@
 import { FunctionComponent, ReactNode } from "react";
 
-import "./styles.css";
+import "./styles.scss";
 
 type ContentWidthContainerProps = {
   children: ReactNode;
