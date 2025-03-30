@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactNode } from 'react';
+import { FunctionComponent, ReactNode } from "react";
 
 type SectionContainerProps = {
   children: ReactNode;
@@ -6,17 +6,13 @@ type SectionContainerProps = {
 };
 
 /**
-* Use this to wrap to separate sections of UI.
-*/
+ * Use this Wrapper to separate sections of UI.
+ */
 const SectionContainer: FunctionComponent<SectionContainerProps> = ({
   children,
-  className = '',
+  className = "",
 }) => (
-  <section
-    className={`c-container-section ${className}`}
-  >
-    {children}
-  </section>
+  <section className={`c-container-section ${className}`}>{children}</section>
 );
 
 export default SectionContainer;

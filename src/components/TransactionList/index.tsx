@@ -6,7 +6,9 @@ import { groupTransactionsByDate } from "../../utils/groupTransactionsByDate";
 import { useAppSelector } from "../../store/hooks";
 
 /**
- * Transaction List UI.
+ * Transaction Lists UI.
+ * This component displays transactions transactions dynamically based on the selected `CashflowEnums`.
+ * Transaction Types: "All", "Inflow", and "Outflow"
  */
 const TransactionList: FunctionComponent = () => {
   const transactionFilter = useAppSelector(

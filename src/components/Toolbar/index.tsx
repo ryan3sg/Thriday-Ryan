@@ -5,6 +5,10 @@ import { CashflowEnums } from "../../types/CashflowEnums";
 import { buttonItems } from "./buttonItems";
 import { filterByCashflow } from "../../store/transactionFilterSlice";
 
+/**
+ * Toolbar UI component for filtering transactions.
+ * It displays buttons for different filter options and updates the filter state in the Redux store.
+ */
 const Toolbar: FunctionComponent = () => {
   const filter = useAppSelector((state) => state.transactionFilter.value);
   const dispatch = useAppDispatch();
