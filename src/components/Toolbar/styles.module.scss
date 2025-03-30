@@ -1,13 +1,13 @@
 /* toolbar */
-.component-toolbar {
+.toolbar {
   display: flex;
   gap: 10px;
   align-items: baseline;
   justify-content: end;
 }
 
-/* toolbar button */
-.toolbar-button {
+/* toolbar button - default state */
+.button {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -27,16 +27,16 @@
     color: #111111;
     font-weight: 700;
   }
+}
 
-  /* toolbar button - active */
-  &.active {
-    border: 1px solid #00d373;
-    background-color: #00d373;
-    img {
-      filter: invert(100%);
-    }
-    span {
-      color: #ffffff;
-    }
+/* toolbar button - active state */
+.active {
+  border: 1px solid #00d373;
+  background-color: #00d373;
+  img {
+    filter: invert(100%);
+  }
+  span {
+    color: #ffffff;
   }
 }

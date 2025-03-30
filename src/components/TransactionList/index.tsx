@@ -1,9 +1,10 @@
 import { FunctionComponent, useMemo } from "react";
-import "./styles.scss";
+import styles from "./styles.module.scss";
 import { useGetAllTransactionsQuery } from "../../services/transactions";
 import { priceFormatter } from "../../utils/priceFormatter";
 import { groupTransactionsByDate } from "../../utils/groupTransactionsByDate";
 import { useAppSelector } from "../../store/hooks";
+import clsx from "clsx";
 
 /**
  * Transaction Lists UI.
@@ -54,19 +55,22 @@ const TransactionList: FunctionComponent = () => {
                 amount,
               } = item;
               return (
-                <div className="items rounded-box" key={transactionId}>
-                  <figure className="logo rounded-box">
+                <div
+                  className={clsx(styles.items, "rounded-box")}
+                  key={transactionId}
+                >
+                  <figure className={clsx(styles.logo, "rounded-box")}>
                     <img src={logoUrl} />
                   </figure>
-                  <div className="details">
-                    <h3 className="title">{transactionTitle}</h3>
-                    <p className="location">
+                  <div className={styles.details}>
+                    <h3 className={styles.title}>{transactionTitle}</h3>
+                    <p className={styles.location}>
                       <span>{suburb}</span>
                       {!suburb || !shortCategory ? "" : " | "}
                       <span>{shortCategory}</span>
                     </p>
                   </div>
-                  <div className="amount">
+                  <div className={styles.amount}>
                     <h3>
                       {getCashflow(cashflow)}&nbsp;{priceFormatter(amount)}
                     </h3>

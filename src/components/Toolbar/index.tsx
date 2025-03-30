@@ -1,9 +1,10 @@
 import { FunctionComponent } from "react";
-import "./styles.scss";
+import styles from "./styles.module.scss";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { CashflowEnums } from "../../types/CashflowEnums";
 import { buttonItems } from "./buttonItems";
 import { filterByCashflow } from "../../store/transactionFilterSlice";
+import clsx from "clsx";
 
 /**
  * Toolbar UI component for filtering transactions.
@@ -13,15 +14,15 @@ const Toolbar: FunctionComponent = () => {
   const filter = useAppSelector((state) => state.transactionFilter.value);
   const dispatch = useAppDispatch();
   const isActive = (value: CashflowEnums) => {
-    return filter === value ? "active" : "";
+    return filter === value;
   };
 
   return (
-    <div className="component-toolbar">
+    <div className={styles.toolbar}>
       {buttonItems.map(({ id, filter, icon, content }) => (
         <button
           key={id}
-          className={`toolbar-button rounded-box ${isActive(filter)}`}
+          className={clsx(styles.button, "rounded-box", isActive(filter) && styles.active)}
           onClick={() => dispatch(filterByCashflow(filter))}
         >
           <img src={icon} />
