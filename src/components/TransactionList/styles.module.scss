@@ -53,3 +53,11 @@
     white-space: pre;
   }
 }
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  h4 {
+    font-size: 14px;
+  }
+}

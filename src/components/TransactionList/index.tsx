@@ -3,8 +3,9 @@ import styles from "./styles.module.scss";
 import { useGetAllTransactionsQuery } from "../../services/transactions";
 import { priceFormatter } from "../../utils/priceFormatter";
 import { groupTransactionsByDate } from "../../utils/groupTransactionsByDate";
-import { useAppSelector } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import clsx from "clsx";
+import { setPage } from "../../store/transactionFilterSlice";
 
 /**
  * Transaction Lists UI.
@@ -15,8 +16,17 @@ const TransactionList: FunctionComponent = () => {
   const transactionFilter = useAppSelector(
     (state) => state.transactionFilter.value
   );
-  const { data, error, isLoading } =
-    useGetAllTransactionsQuery(transactionFilter);
+  const page = useAppSelector((state) => state.transactionFilter.page);
+  const dispatch = useAppDispatch();
+  const {
+    data: transactions,
+    error,
+    isLoading,
+  } = useGetAllTransactionsQuery({
+    cashflow: transactionFilter,
+    page,
+  });
+  const { data, next, pages: totalPages } = transactions ?? {};
 
   const groupedTransactions = useMemo(
     () => groupTransactionsByDate(data) ?? {},
@@ -38,8 +48,8 @@ const TransactionList: FunctionComponent = () => {
     <div className="component-transaction">
       {error ? (
         <h2 className="color-error">An error has occured.</h2>
-      ) : isLoading && !groupedTransactions ? (
-        <h2>Loading...</h2>
+      ) : isLoading ? (
+        <h2>Loading data...</h2>
       ) : (
         Object.entries(groupedTransactions).map(([date, items]) => (
           <div className="group" key={date}>
@@ -81,6 +91,23 @@ const TransactionList: FunctionComponent = () => {
           </div>
         ))
       )}
+      <div className={styles.pagination}>
+        <button
+          className="button"
+          onClick={() => dispatch(setPage(page - 1))}
+          disabled={totalPages ? page === 1 : true}
+        >
+          Previous
+        </button>
+        <h4>Page {page} of {totalPages}</h4>
+        <button
+          className="button"
+          onClick={() => dispatch(setPage(page + 1))}
+          disabled={totalPages ? !next : true}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };

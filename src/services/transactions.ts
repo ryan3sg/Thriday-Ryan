@@ -8,10 +8,17 @@ export const transactionsApi = createApi({
     baseUrl: import.meta.env.REACT_APP_API_BASE_URL,
   }),
   endpoints: (builder) => ({
-    getAllTransactions: builder.query<TransactionType[], CashflowEnums>({
-      query: (params: CashflowEnums) => `/transactions?${params}`,
+    getAllTransactions: builder.query<
+      { data: TransactionType[]; pages: number; next: number | null },
+      { cashflow: CashflowEnums; page: number }
+    >({
+      query: ({ cashflow, page }) =>
+        `/transactions?_page=${page}&_per_page=10&${cashflow}`,
     }),
-    createTransaction: builder.mutation<TransactionType, Partial<TransactionType>>({
+    createTransaction: builder.mutation<
+      TransactionType,
+      Partial<TransactionType>
+    >({
       query: (newItem: Partial<TransactionType>) => ({
         url: "/transactions",
         method: "POST",
