@@ -1,12 +1,12 @@
-import { FunctionComponent, useMemo } from "react";
+import { FunctionComponent, useEffect, useMemo } from "react";
 import styles from "./styles.module.scss";
-import { useGetAllTransactionsQuery } from "../../services/transactions";
 import { priceFormatter } from "../../utils/priceFormatter";
 import { groupTransactionsByDate } from "../../utils/groupTransactionsByDate";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import clsx from "clsx";
 import { setPage } from "../../store/transactionFilterSlice";
 import { GenericButton } from "../Button/GenericButton";
+import { fetchTransaction } from "../../services/transactionApi";
 
 /**
  * Transaction Lists UI.
@@ -14,19 +14,13 @@ import { GenericButton } from "../Button/GenericButton";
  * Transaction Types: "All", "Inflow", and "Outflow"
  */
 const TransactionList: FunctionComponent = () => {
-  const transactionFilter = useAppSelector(
-    (state) => state.transactionFilter.value
+  const { value: filter, page } = useAppSelector(
+    (state) => state.transactionFilter
   );
-  const page = useAppSelector((state) => state.transactionFilter.page);
+  const { transactions, isLoading, error } = useAppSelector(
+    (state) => state.transactionApi
+  );
   const dispatch = useAppDispatch();
-  const {
-    data: transactions,
-    error,
-    isLoading,
-  } = useGetAllTransactionsQuery({
-    cashflow: transactionFilter,
-    page,
-  });
   const { data, next, pages: totalPages } = transactions ?? {};
 
   const groupedTransactions = useMemo(
@@ -44,6 +38,10 @@ const TransactionList: FunctionComponent = () => {
         return "";
     }
   };
+
+  useEffect(() => {
+    dispatch(fetchTransaction({ page, cashflow: filter }));
+  }, [page, filter]);
 
   return (
     <div className="component-transaction">

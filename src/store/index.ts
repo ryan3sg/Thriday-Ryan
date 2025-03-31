@@ -1,14 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { transactionsApi } from "../services/transactions";
 import transactionFilterReducer from "./transactionFilterSlice";
+import transactionReducer from "../services/transactionApi";
 
 export const store = configureStore({
   reducer: {
     transactionFilter: transactionFilterReducer,
-    [transactionsApi.reducerPath]: transactionsApi.reducer,
+    transactionApi: transactionReducer,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(transactionsApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
